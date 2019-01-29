@@ -55,11 +55,13 @@ public class HomeController {
         return sb.toString();
     }
 
-    //Post Request ile gelmek.
-    @PostMapping("postilegel") // /test/postilegel
-    public String postmap1(@RequestBody String str, @RequestParam(name = "t") int t)
+    //localhost:8080/test/postilegel/pathssss?asdasdadsdsdak=5asdasdasdsda&l=3ffff&f&aa=aa&t=10 ilginç ama çalışıyor bu da.
+    //Post Request ile gelmek. Post ile gelirse datayı alabiliyorum
+    @PostMapping("postilegel/{path}") // /test/postilegel
+    public String postmap1(@RequestBody String str, @RequestParam(name = "t") int t, @PathVariable("path") String path)
     {
-        return str + t;
+        int result = t + 1;
+        return result + str + path;
     }
 
 
